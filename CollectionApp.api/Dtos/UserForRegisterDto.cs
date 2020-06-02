@@ -4,10 +4,10 @@ namespace CollectionApp.api.Dtos
 {
     public class UserForRegisterDto
     {
-        // [Required]
+        [Required]
         public string Username { get; set; }
 
-        // [Required]
+        [Required]
         [StringLength(32, MinimumLength = 8, ErrorMessage = "{0} cannot be shorter than {2} characters or longer than {1} characters. ")]
         public string Password { get; set; }
     }
