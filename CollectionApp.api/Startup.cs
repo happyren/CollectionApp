@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using CollectionApp.api.Data;
 using CollectionApp.api.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -36,10 +37,14 @@ namespace CollectionApp.api
         {
             services.AddDbContext<DataContext>(x => x.UseSqlite
             (Configuration.GetConnectionString("DefaultConnection")));
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(opt => {
+                opt.SerializerSettings.ReferenceLoopHandling = 
+                Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            });
             services.AddCors();
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<ICollectorRepository, CollectorRepository>();
+            services.AddAutoMapper(typeof(CollectorRepository).Assembly);
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options => {
