@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Kaixi\AppData\Local\JetBrains\Rider2020.1\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Kaixi\AppData\Local\JetBrains\Rider2020.1\resharper-host\Local\Transient\ReSharperHost\v201\SolutionCaches\_.19.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Kaixi\project\CollectionApp" t="IncludeFlat">
+      <e p="CollectionApp.api" t="IncludeRecursive">
+        <e p=".gitignore" t="Include" />
+        <e p="appsettings.Development.json" t="Include" />
+        <e p="appsettings.json" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="CollectionApp.api.csproj" t="IncludeRecursive" />
+        <e p="collectionapp.db" t="Include" />
+        <e p="Controllers" t="Include">
+          <e p="AuthController.cs" t="Include" />
+          <e p="ValuesController.cs" t="Include" />
+          <e p="WeatherForecastController.cs" t="Include" />
+        </e>
+        <e p="Data" t="Include">
+          <e p="AuthRepository.cs" t="Include" />
+          <e p="DataContext.cs" t="Include" />
+          <e p="IAuthRepository.cs" t="Include" />
+          <e p="ICollectorRepository.cs" t="Include" />
+          <e p="Seed.cs" t="Include" />
+          <e p="UserSeedData.json" t="Include" />
+        </e>
+        <e p="Dtos" t="Include">
+          <e p="UserForLoginDto.cs" t="Include" />
+          <e p="UserForRegisterDto.cs" t="Include" />
+        </e>
+        <e p="Helpers" t="Include">
+          <e p="Extensions.cs" t="Include" />
+        </e>
+        <e p="Migrations" t="Include">
+          <e p="20200527130144_InitialCreate.cs" t="Include" />
+          <e p="20200527130144_InitialCreate.Designer.cs" t="Include" />
+          <e p="20200529152835_AddedUserEntity.cs" t="Include" />
+          <e p="20200529152835_AddedUserEntity.Designer.cs" t="Include" />
+          <e p="20200603053444_ExtendUserClass.cs" t="Include" />
+          <e p="20200603053444_ExtendUserClass.Designer.cs" t="Include" />
+          <e p="DataContextModelSnapshot.cs" t="Include" />
+        </e>
+        <e p="Models" t="Include">
+          <e p="Photo.cs" t="Include" />
+          <e p="User.cs" t="Include" />
+          <e p="Value.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.1" t="Include">
+              <e p="CollectionApp.api.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="launchSettings.json" t="Include" />
+        </e>
+        <e p="Startup.cs" t="Include" />
+        <e p="WeatherForecast.cs" t="Include" />
+      </e>
+      <e p="packages" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
