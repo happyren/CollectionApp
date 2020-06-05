@@ -19,6 +19,6 @@ namespace CollectionApp.api.Models
 
         public string Introduction { get; set; }
 
-        public ICollection<Photo> Photos { get; set; }
+        public ICollection<UserPhoto> Photos { get; set; }
     }
 }

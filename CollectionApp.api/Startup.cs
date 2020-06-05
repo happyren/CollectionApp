@@ -44,6 +44,7 @@ namespace CollectionApp.api
             services.AddCors();
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<ICollectorRepository, CollectorRepository>();
+            services.AddScoped<ICollectionGundamRepository, CollectionGundamRepository>();
             services.AddAutoMapper(typeof(CollectorRepository).Assembly);
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

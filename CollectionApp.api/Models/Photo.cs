@@ -13,9 +13,5 @@ namespace CollectionApp.api.Models
         public DateTime DateAdded { get; set; }
 
         public bool IsMain { get; set; }
-
-        public User user { get; set; }
-
-        public int UserId { get; set; }
     }
 }

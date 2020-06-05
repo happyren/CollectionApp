@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CollectionApp.api.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200603053444_ExtendUserClass")]
+    [Migration("20200604162414_ExtendUserClass")]
     partial class ExtendUserClass
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -17,34 +17,6 @@ namespace CollectionApp.api.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.0");
-
-            modelBuilder.Entity("CollectionApp.api.Models.Photo", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("DateAdded")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("IsMain")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Url")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Photos");
-                });
 
             modelBuilder.Entity("CollectionApp.api.Models.User", b =>
                 {
@@ -75,21 +47,35 @@ namespace CollectionApp.api.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("CollectionApp.api.Models.Value", b =>
+            modelBuilder.Entity("CollectionApp.api.Models.UserPhoto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Name")
+                    b.Property<DateTime>("DateAdded")
                         .HasColumnType("TEXT");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsMain")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Url")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Values");
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserPhotos");
                 });
 
-            modelBuilder.Entity("CollectionApp.api.Models.Photo", b =>
+            modelBuilder.Entity("CollectionApp.api.Models.UserPhoto", b =>
                 {
                     b.HasOne("CollectionApp.api.Models.User", "user")
                         .WithMany("Photos")

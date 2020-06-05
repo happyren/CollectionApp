@@ -10,13 +10,23 @@ namespace CollectionApp.api.Helpers
     {
         public AutoMapperProfiles()
         {
+            // User
             CreateMap<User, UserForListDto>()
                 .ForMember(dest => dest.PhotoUrl, opt =>
                     opt.MapFrom(src => src.Photos.FirstOrDefault(p => p.IsMain).Url));
             CreateMap<User, UserForDetailDto>()
                 .ForMember(dest => dest.PhotoUrl, opt =>
                     opt.MapFrom(src => src.Photos.FirstOrDefault(p => p.IsMain).Url));
-            CreateMap<Photo, PhotoForDetailDto>();
+            CreateMap<UserPhoto, PhotoForDetailDto>();
+
+            // Collection Gundam
+            CreateMap<CollectionGundam, CollectionGundamForListDto>()
+                .ForMember(dest => dest.PhotoUrl, opt =>
+                    opt.MapFrom(src => src.Photos.FirstOrDefault(p => p.IsMain).Url));
+            CreateMap<CollectionGundam, CollectionGundamForDetailDto>()
+                .ForMember(dest => dest.PhotoUrl, opt =>
+                    opt.MapFrom(src => src.Photos.FirstOrDefault(p => p.IsMain).Url));
+            CreateMap<CollectionGundamPhoto, PhotoForDetailDto>();
         }
     }
 }

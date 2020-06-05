@@ -7,6 +7,9 @@ namespace CollectionApp.api.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Values");
+
             migrationBuilder.AddColumn<DateTime>(
                 name: "Created",
                 table: "Users",
@@ -24,7 +27,7 @@ namespace CollectionApp.api.Migrations
                 nullable: true);
 
             migrationBuilder.CreateTable(
-                name: "Photos",
+                name: "UserPhotos",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -37,9 +40,9 @@ namespace CollectionApp.api.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Photos", x => x.Id);
+                    table.PrimaryKey("PK_UserPhotos", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Photos_Users_UserId",
+                        name: "FK_UserPhotos_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
@@ -47,15 +50,15 @@ namespace CollectionApp.api.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Photos_UserId",
-                table: "Photos",
+                name: "IX_UserPhotos_UserId",
+                table: "UserPhotos",
                 column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Photos");
+                name: "UserPhotos");
 
             migrationBuilder.DropColumn(
                 name: "Created",
@@ -68,6 +71,19 @@ namespace CollectionApp.api.Migrations
             migrationBuilder.DropColumn(
                 name: "KnownAs",
                 table: "Users");
+
+            migrationBuilder.CreateTable(
+                name: "Values",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Values", x => x.Id);
+                });
         }
     }
 }
