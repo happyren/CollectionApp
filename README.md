@@ -8,6 +8,11 @@ Getting a full collection of things is satisfying, but it could be tedious in th
 
 **Currently this project works as a testing field for the concept using [Gunpla](https://en.wikipedia.org/wiki/Gundam_model) as the target.**
 
+- [Why](#why)
+- [Function showcase](#function-showcase)
+- [What have I done so far?](#what-have-i-done-so-far)
+- [Going down the line](#going-down-the-line)
+
 ## Why?
 
 This is a practice project for me to get used to dotnet development for the most part. 
@@ -17,6 +22,8 @@ I spent days to think of a great project idea, being influnced heavily by the co
 This is my testing field, hone my skills will be the major target!!!
 
 ~~Also I learnt this idea was implemented years ago by gunpla fans.~~
+
+## Function showcase
 
 ## What have I done so far?
 
