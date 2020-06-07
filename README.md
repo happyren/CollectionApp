@@ -46,3 +46,14 @@ Going towards the client side:
 
 - [x] Resolvers are used to achieve real time data object access.
 
+## Going down the line
+
+1. Refine this project and learn to deploy it into production mode.
+
+2. Get going with Jenkins and Docker! They're both interesting in terms of improving productivities.
+
+3. Learn TDD with .Net
+
+4. **React** is the next framework to learn, as I really just need the front-end framework be purely for UI.
+
+5. **Swift** will be the last stop in recent development training, I'll be implementing a version of this idea in iOS form one day.
