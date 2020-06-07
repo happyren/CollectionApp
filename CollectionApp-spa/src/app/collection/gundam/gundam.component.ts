@@ -20,12 +20,4 @@ export class GundamComponent implements OnInit {
     });
   }
 
-  // loadGundams() {
-  //   this.gundamService.getGundams().subscribe((gundams: Gundam[]) => {
-  //     this.gundams = gundams;
-  //   }, error => {
-  //     this.alertify.error(error);
-  //   });
-  // }
-
 }

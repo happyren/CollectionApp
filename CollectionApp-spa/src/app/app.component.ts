@@ -9,6 +9,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class AppComponent implements OnInit {
   jwtHelper = new JwtHelperService();
+  title: any;
 
   constructor(private authService: AuthService) {}
 

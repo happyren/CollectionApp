@@ -15,7 +15,6 @@ import { AuthService } from './_services/auth.service';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
-import { TopCollectorsComponent } from './top-collectors/top-collectors.component';
 import { FollowingCollectorsComponent } from './following-collectors/following-collectors.component';
 import { MessagesComponent } from './messages/messages.component';
 import { appRoutes } from './routes';
@@ -24,6 +23,14 @@ import { GundamCardComponent } from './collection/gundam-card/gundam-card.compon
 import { GundamDetailComponent } from './collection/gundam-detail/gundam-detail.component';
 import { GundamDetailResolver } from './_resolvers/gundam-detail.resolver';
 import { GundamListResolver } from './_resolvers/gundam-list.resolver';
+import { MemberComponent } from './members/member/member.component';
+import { MemberDetailComponent } from './members/member-detail/member-detail.component';
+import { UserListResolver } from './_resolvers/user-list.resolver';
+import { UserDetailResolver } from './_resolvers/user-detail.resolver';
+import { MemberEditComponent } from './members/member-edit/member-edit.component';
+import { UserEditResolver } from './_resolvers/user-edit.resolver';
+import { AuthGuard } from './_guards/auth.guard';
+import { PreventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes.guard';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -35,12 +42,14 @@ export function tokenGetter() {
     NavComponent,
     HomeComponent,
     RegisterComponent,
-    TopCollectorsComponent,
     FollowingCollectorsComponent,
     MessagesComponent,
     GundamComponent,
     GundamCardComponent,
     GundamDetailComponent,
+    MemberComponent,
+    MemberDetailComponent,
+    MemberEditComponent
   ],
   imports: [
     BrowserModule,
@@ -62,8 +71,13 @@ export function tokenGetter() {
   providers: [
     AuthService,
     ErrorInterceptorProvider,
+    AuthGuard,
     GundamDetailResolver,
-    GundamListResolver
+    GundamListResolver,
+    UserListResolver,
+    UserDetailResolver,
+    UserEditResolver,
+    PreventUnsavedChangesGuard
   ],
   bootstrap: [AppComponent],
 })

@@ -1,0 +1,22 @@
+<div *ngFor="let user of usersTop3" class="container top-3">
+  <div class="card">
+    <div class="card-header">
+      <i *ngIf="user.rank==1" class="fa fa-superpowers"><strong>Champion</strong> </i>
+      <i *ngIf="user.rank==2" class="fa fa-ravelry"><strong>Second Place</strong></i>
+      <i *ngIf="user.rank==3" class="fa fa-grav"> <strong>Third Place</strong> </i>
+    </div>
+    <div class="card-body">
+      <a style="text-decoration: none;" class="stretched-link" [routerLink]="['/members/', user.id]"></a>
+      <p>{{user.username}}</p>
+    </div>
+  </div>
+</div>
+<hr>
+<div *ngFor="let user of usersRest" class="container rest">
+  <div class="card">
+    <div class="card-body">
+      <a style="text-decoration: none;" class="stretched-link" [routerLink]="['/members/', user.id]"></a>
+      <p>{{user.username}}</p>
+    </div>
+  </div>
+</div>
