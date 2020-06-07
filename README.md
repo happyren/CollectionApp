@@ -1,6 +1,6 @@
 # Collection App
 
-![Repo Profile Pic](https://github.com/happyren/CollectionApp/blob/master/repository-open-graph-template.png)
+![Repo Profile Pic](.repository-open-graph-template.png)
 
 Getting a full collection of things is satisfying, but it could be tedious in the progress.
 
@@ -12,6 +12,7 @@ Getting a full collection of things is satisfying, but it could be tedious in th
 - [Function showcase](#function-showcase)
 - [What have I done so far?](#what-have-i-done-so-far)
 - [Going down the line](#going-down-the-line)
+- [Appendix](#appendix)
 
 ## Why?
 
@@ -24,6 +25,8 @@ This is my testing field, hone my skills will be the major target!!!
 ~~Also I learnt this idea was implemented years ago by gunpla fans.~~
 
 ## Function showcase
+
+
 
 ## What have I done so far?
 
@@ -64,3 +67,29 @@ Going towards the client side:
 4. **React** is the next framework to learn, as I really just need the front-end framework be purely for UI.
 
 5. **Swift** will be the last stop in recent development training, I'll be implementing a version of this idea in iOS form one day.
+
+## Appendix
+
+![Welcome page](./demo/welcome.png)
+*Welcome Page*
+
+![Register page](./demo/register.png)
+*Register Can Succeed*
+
+![Register Error](./demo/register-err.png)
+*Register Can Report Failure*
+
+![Login succeed](./demo/login.png)
+*Login bring user to model listing*
+
+![Model detail](./demo/model-detail.png)
+*User can view model detail*
+
+![User listing[(./demo/user-listing.png)
+*User can see other users in a ranking style (Function currently under development)*
+
+![profile](./demo/profile.png)
+*Users can see other user's profile*
+
+![profile edit](./demo/profile-editing.png)
+*Users can edit their profile*
