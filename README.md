@@ -1,6 +1,6 @@
 # Collection App
 
-![Repo Profile Pic](.repository-open-graph-template.png)
+![Repo Profile Pic](./repository-open-graph-template.png)
 
 Getting a full collection of things is satisfying, but it could be tedious in the progress.
 
