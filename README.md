@@ -26,6 +26,17 @@ This is my testing field, hone my skills will be the major target!!!
 
 ## Function showcase
 
+![register](./demo/register.gif)
+
+> *Register Can Succeed*
+
+![reg fail](./demo/register-fail.gif)
+
+> *Register Can Report Failure*
+
+![login](./demo/login.gif)
+
+> *Login bring user to model listing*
 
 
 ## What have I done so far?
