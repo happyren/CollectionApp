@@ -38,6 +38,18 @@ This is my testing field, hone my skills will be the major target!!!
 
 > *Login bring user to model listing*
 
+![detail](./demo/detail.gif)
+
+> *User can view model detail*
+
+![user](./demo/users.gif)
+
+> *User can see other users in a ranking style (Function currently under development) and view their profile*
+
+![user](./demo/edit.gif)
+
+> *Users can edit their profile*
+
 
 ## What have I done so far?
 
