@@ -22,12 +22,27 @@ This is my testing field, hone my skills will be the major target!!!
 
 I have already get the api up and running.
 
-- [x] It implements the Repository pattern for app-db data transmission.
+Starting off of the server
 
-- [x] Data Transmission Object(DTO) is used for data accessing from its client.
+- [x] It implements the **Repository pattern** for app-db data transmission.
 
-- [x] It uses AutoMapper to handle model to dto mapping (vice versa).
+- [x] **Data Transmission Object(DTO)** is used for data accessing from its client.
+
+- [x] It uses **AutoMapper** to handle model to dto mapping (vice versa).
 
 - [x] SQLite is used for the development, this is due to change when bring it into production mode.
 
 - [x] JWT is the choice of authentication token.
+
+- [x] Custom Exception Handler is in place
+
+Going towards the client side:
+
+- [x] Angular is the framework of choice, it's a single page application.
+
+- [x] Multiple **services to reduce redudant coding**.
+
+- [x] Guards are implemented to avoid unauthorized access and unintended redirection.
+
+- [x] Resolvers are used to achieve real time data object access.
+
