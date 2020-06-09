@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CollectionApp.api.Helpers;
 using CollectionApp.api.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -34,11 +35,12 @@ namespace CollectionApp.api.Data
             return user;
         }
 
-        public async Task<IEnumerable<User>> GetUsers()
+        public async Task<PageList<User>> GetUsers(UserParams userParams)
         {
-            var users = await this.context.Users.Include(p => p.Photos).ToListAsync();
+            var users =  this.context.Users.Include(p => p.Photos);
 
-            return users;
+            return await PageList<User>.CreateAsync(users, userParams.PageNumber, 
+            userParams.PageSize);
         }
 
         public async Task<bool> SaveAll()
