@@ -12,7 +12,6 @@ Getting a full collection of things is satisfying, but it could be tedious in th
 - [Function showcase](#function-showcase)
 - [What have I done so far?](#what-have-i-done-so-far)
 - [Going down the line](#going-down-the-line)
-- [Appendix](#appendix)
 
 ## Why?
 
@@ -90,29 +89,3 @@ Going towards the client side:
 4. **React** is the next framework to learn, for the most part I want it to be simple and reactive, Angular's bidirectional binding often gives a clunky reaction for me. Also the pentester part of me hate the fact that third party libraries are not updated often enough for Angular.
 
 5. **Swift** will be the last stop in recent development training, I'll be implementing a version of this idea in iOS form one day.
-
-## Appendix
-
-![Welcome page](./demo/welcome.png)
-*Welcome Page*
-
-![Register page](./demo/register.png)
-*Register Can Succeed*
-
-![Register Error](./demo/register-err.png)
-*Register Can Report Failure*
-
-![Login succeed](./demo/login.png)
-*Login bring user to model listing*
-
-![Model detail](./demo/model-detail.png)
-*User can view model detail*
-
-![User listing[(./demo/user-listing.png)
-*User can see other users in a ranking style (Function currently under development)*
-
-![profile](./demo/profile.png)
-*Users can see other user's profile*
-
-![profile edit](./demo/profile-editing.png)
-*Users can edit their profile*
