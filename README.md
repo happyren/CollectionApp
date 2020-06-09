@@ -87,7 +87,7 @@ Going towards the client side:
 
 3. Learn TDD with .Net
 
-4. **React** is the next framework to learn, as I really just need the front-end framework be purely for UI.
+4. **React** is the next framework to learn, for the most part I want it to be simple and reactive, Angular's bidirectional binding often gives a clunky reaction for me. Also the pentester part of me hate the fact that third party libraries are not updated often enough for Angular.
 
 5. **Swift** will be the last stop in recent development training, I'll be implementing a version of this idea in iOS form one day.
 
