@@ -37,7 +37,7 @@ namespace CollectionApp.api.Data
 
         public async Task<PageList<User>> GetUsers(UserParams userParams)
         {
-            var users = this.context.Users.OrderByDescending(p => p.Username)
+            var users = this.context.Users.OrderByDescending(p => p.Id)
                 .Include(p => p.Photos).AsQueryable();
 
             users = users.Where(u => u.Id != userParams.UserId);

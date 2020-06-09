@@ -11,7 +11,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CollectionApp.api.Controllers
 {
-
     [ServiceFilter(typeof(LogUserActivity))]
     [Authorize]
     [Route("api/[controller]")]
@@ -19,6 +18,7 @@ namespace CollectionApp.api.Controllers
     public class UsersController : ControllerBase
     {
         private readonly ICollectorRepository repo;
+
         private readonly IMapper mapper;
 
         public UsersController(ICollectorRepository repo, IMapper mapper)
@@ -28,7 +28,7 @@ namespace CollectionApp.api.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetUsers([FromQuery]UserParams userParams)
+        public async Task<IActionResult> GetUsers([FromQuery] UserParams userParams)
         {
             var currentUserId =
                 int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
@@ -42,12 +42,12 @@ namespace CollectionApp.api.Controllers
                 userParams.Gender = userFromRepo.Gender;
             }
 
-                var users = await this.repo.GetUsers(userParams);
+            var users = await this.repo.GetUsers(userParams);
 
             var usersToReturn = this.mapper.Map<IEnumerable<UserForListDto>>(users);
-            
+
             Response.AddPagination(users.CurrentPage, users.PageSize, users.TotalCount,
-             users.TotalPages);
+                users.TotalPages);
 
             return Ok(usersToReturn);
         }
@@ -63,20 +63,20 @@ namespace CollectionApp.api.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateUser(int id, UserForUpdateDto userForUpdateDto)
+        public async Task<IActionResult> UpdateUser(int id,
+            UserForUpdateDto userForUpdateDto)
         {
             if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
                 return Unauthorized();
-            
+
             var userFromRepo = await this.repo.GetUser(id);
 
             mapper.Map(userForUpdateDto, userFromRepo);
 
             if (await this.repo.SaveAll())
                 return NoContent();
-            
+
             throw new Exception($"Updating user{id} failed on save");
         }
     }
 }
-
