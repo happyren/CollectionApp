@@ -49,6 +49,14 @@ This is my testing field, hone my skills will be the major target!!!
 
 > *Users can edit their profile*
 
+![filter](./demo/filter.gif)
+
+> *User can use filter to choose other users*
+
+![order](./demo/order.gif)
+
+> *User can order listed users*
+
 
 ## What have I done so far?
 
