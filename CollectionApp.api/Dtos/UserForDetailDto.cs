@@ -19,6 +19,8 @@ namespace CollectionApp.api.Dtos
         public string Introduction { get; set; }
 
         public string PhotoUrl { get; set; }
+        
+        public string Gender { get; set; }
 
         public ICollection<PhotoForDetailDto> Photos { get; set; }
     }

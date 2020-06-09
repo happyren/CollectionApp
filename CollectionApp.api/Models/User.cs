@@ -18,6 +18,8 @@ namespace CollectionApp.api.Models
         public string KnownAs { get; set; }
 
         public string Introduction { get; set; }
+
+        public string Gender { get; set; } = "others";
         
         public DateTime LastActive { get; set; }
 

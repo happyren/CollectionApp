@@ -37,8 +37,12 @@ namespace CollectionApp.api.Data
 
         public async Task<PageList<User>> GetUsers(UserParams userParams)
         {
-            var users =  this.context.Users.Include(p => p.Photos);
+            var users = this.context.Users.Include(p => p.Photos).AsQueryable();
 
+            users = users.Where(u => u.Id != userParams.UserId);
+
+            users = users.Where(u => u.Gender == userParams.Gender);
+            
             return await PageList<User>.CreateAsync(users, userParams.PageNumber, 
             userParams.PageSize);
         }

@@ -30,7 +30,19 @@ namespace CollectionApp.api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetUsers([FromQuery]UserParams userParams)
         {
-            var users = await this.repo.GetUsers(userParams);
+            var currentUserId =
+                int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            var userFromRepo = await repo.GetUser(currentUserId);
+
+            userParams.UserId = currentUserId;
+
+            if (string.IsNullOrEmpty(userParams.Gender))
+            {
+                userParams.Gender = userFromRepo.Gender;
+            }
+
+                var users = await this.repo.GetUsers(userParams);
 
             var usersToReturn = this.mapper.Map<IEnumerable<UserForListDto>>(users);
             
