@@ -3,6 +3,7 @@ import { AuthService } from '../_services/auth.service';
 import { AlertifyService } from '../_services/alertify.service';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { User } from '../_models/user';
 
 @Component({
   selector: 'app-nav',
@@ -13,6 +14,8 @@ export class NavComponent implements OnInit {
   model: any = {};
   jwtHelper = new JwtHelperService();
   userName: string;
+  user: User;
+  photoUrl: string;
 
   constructor(
     private authService: AuthService,
@@ -20,7 +23,9 @@ export class NavComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.authService.currentPhotoUrl.subscribe(photoUrl => this.photoUrl = photoUrl);
+  }
 
   login() {
     this.authService.login(this.model).subscribe(
@@ -41,7 +46,9 @@ export class NavComponent implements OnInit {
       const decodedToken = this.jwtHelper.decodeToken(
         localStorage.getItem('token')
       );
+      this.user = JSON.parse(localStorage.getItem('user'));
       this.userName = decodedToken.unique_name;
+      this.authService.changeMemberPhoto(this.user.photoUrl);
       return true;
     }
     return false;
@@ -49,6 +56,7 @@ export class NavComponent implements OnInit {
 
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
     this.alertify.success('logged out');
     this.router.navigate(['/home']);
     this.userName = null;

@@ -19,6 +19,7 @@ import { AuthService } from 'src/app/_services/auth.service';
 export class MemberEditComponent implements OnInit {
   @ViewChild('editForm') editForm: NgForm;
   user: User;
+  photoUrl: string;
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
   @HostListener('window:beforeunload', ['$event'])
@@ -51,6 +52,8 @@ export class MemberEditComponent implements OnInit {
       },
     ];
     this.galleryImages = this.getImages();
+
+    this.authService.currentPhotoUrl.subscribe(photoUrl => this.user.photoUrl = photoUrl);
   }
 
   getImages() {
@@ -72,5 +75,9 @@ export class MemberEditComponent implements OnInit {
     }, error => {
       this.alertify.error(error);
     });
+  }
+
+  updateMainPhoto(url: string) {
+    this.user.photoUrl = url;
   }
 }

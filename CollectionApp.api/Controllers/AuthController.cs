@@ -3,6 +3,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using CollectionApp.api.Data;
 using CollectionApp.api.Dtos;
 using CollectionApp.api.Models;
@@ -18,11 +19,13 @@ namespace CollectionApp.api.Controllers
     {
         private readonly IAuthRepository repo;
         private readonly IConfiguration config;
+        private readonly IMapper mapper;
 
-        public AuthController(IAuthRepository repo, IConfiguration config)
+        public AuthController(IAuthRepository repo, IConfiguration config, IMapper mapper)
         {
             this.repo = repo;
             this.config = config;
+            this.mapper = mapper;
         }
 
         [HttpPost("register")]
@@ -71,8 +74,11 @@ namespace CollectionApp.api.Controllers
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
 
+            var userToReturn = mapper.Map<UserForListDto>(user);
+
             return Ok(new {
-                token = tokenHandler.WriteToken(token)
+                token = tokenHandler.WriteToken(token),
+                userToReturn
             });
         }
     }

@@ -1,8 +1,8 @@
-using System;
+﻿using System;
 
-namespace CollectionApp.api.Models
+namespace CollectionApp.api.Dtos
 {
-    public class Photo
+    public class PhotoForReturnDto
     {
         public int Id { get; set; }
 

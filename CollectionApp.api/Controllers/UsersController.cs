@@ -5,12 +5,14 @@ using System.Threading.Tasks;
 using AutoMapper;
 using CollectionApp.api.Data;
 using CollectionApp.api.Dtos;
+using CollectionApp.api.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CollectionApp.api.Controllers
 {
 
+    [ServiceFilter(typeof(LogUserActivity))]
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]

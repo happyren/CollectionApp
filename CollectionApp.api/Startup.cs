@@ -46,6 +46,7 @@ namespace CollectionApp.api
             services.AddScoped<ICollectorRepository, CollectorRepository>();
             services.AddScoped<ICollectionGundamRepository, CollectionGundamRepository>();
             services.AddAutoMapper(typeof(CollectorRepository).Assembly);
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options => {
@@ -57,6 +58,8 @@ namespace CollectionApp.api
                         ValidateAudience = false
                     };
                 });
+
+            services.AddScoped<LogUserActivity>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

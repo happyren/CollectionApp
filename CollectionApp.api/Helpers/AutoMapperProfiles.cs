@@ -29,6 +29,10 @@ namespace CollectionApp.api.Helpers
             CreateMap<CollectionGundamPhoto, PhotoForDetailDto>();
 
             CreateMap<UserForUpdateDto, User>();
+
+            CreateMap<PhotoForCreationDto, UserPhoto>();
+
+            CreateMap<Photo, PhotoForReturnDto>();
         }
     }
 }
