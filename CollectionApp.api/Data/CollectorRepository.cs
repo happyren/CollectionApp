@@ -37,14 +37,33 @@ namespace CollectionApp.api.Data
 
         public async Task<PageList<User>> GetUsers(UserParams userParams)
         {
-            var users = this.context.Users.Include(p => p.Photos).AsQueryable();
+            var users = this.context.Users.OrderByDescending(p => p.Username)
+                .Include(p => p.Photos).AsQueryable();
 
             users = users.Where(u => u.Id != userParams.UserId);
 
             users = users.Where(u => u.Gender == userParams.Gender);
-            
-            return await PageList<User>.CreateAsync(users, userParams.PageNumber, 
-            userParams.PageSize);
+
+            if (!string.IsNullOrEmpty(userParams.OrderBy))
+            {
+                switch (userParams.OrderBy)
+                {
+                    case "username": 
+                        users = users.OrderByDescending(u => u.Username);
+                        break;
+                    case "lastActive": 
+                        users = users.OrderByDescending(u => u.LastActive);
+                        break;
+                    case "knownAs": 
+                        users = users.OrderByDescending(u => u.KnownAs);
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            return await PageList<User>.CreateAsync(users, userParams.PageNumber,
+                userParams.PageSize);
         }
 
         public async Task<bool> SaveAll()
@@ -64,6 +83,5 @@ namespace CollectionApp.api.Data
             return await context.UserPhotos.Where(u => u.UserId == id)
                 .FirstOrDefaultAsync(p => p.IsMain);
         }
-        
     }
 }
