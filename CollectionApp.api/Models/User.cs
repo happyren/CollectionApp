@@ -26,5 +26,9 @@ namespace CollectionApp.api.Models
         public ICollection<UserPhoto> Photos { get; set; }
 
         public ICollection<Like> Likees { get; set; }
+
+        public ICollection<Message> MessageSent { get; set; }
+
+        public ICollection<Message> MessageReceive { get; set; }
     }
 }

@@ -15,5 +15,8 @@ namespace CollectionApp.api.Data
         Task<Photo> GetPhoto(int id);
         Task<Photo> GetMainPhoto(int id);
         Task<Like> GetLike(int userId, int gundamId);
+        Task<Message> GetMessage(int id);
+        Task<PageList<Message>> GetMessagesForUser(MessageParams messageParams);
+        Task<IEnumerable<Message>> GetMessageThread(int userId, int recipientId);
     }
 }

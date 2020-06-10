@@ -19,6 +19,8 @@ namespace CollectionApp.api.Data
 
         public DbSet<Like> Likes { get; set; }
 
+        public DbSet<Message> Messages { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Like>().HasKey(k => new {k.LikerId, k.LikeeId});
@@ -28,6 +30,12 @@ namespace CollectionApp.api.Data
 
             modelBuilder.Entity<Like>().HasOne(c => c.Likee).WithMany(c => c.Likers)
                 .HasForeignKey(c => c.LikeeId).OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Message>().HasOne(u => u.Sender).WithMany(u => u
+                .MessageSent).OnDelete(DeleteBehavior.Restrict);
+            
+            modelBuilder.Entity<Message>().HasOne(u => u.Recipient).WithMany(u => u
+                .MessageReceive).OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
