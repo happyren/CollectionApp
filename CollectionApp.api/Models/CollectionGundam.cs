@@ -18,6 +18,7 @@ namespace CollectionApp.api.Models
 
         public string Series { get; set; }
 
+        public ICollection<Like> Likers { get; set; }
         public ICollection<CollectionGundamPhoto> Photos { get; set; }
     }
 }

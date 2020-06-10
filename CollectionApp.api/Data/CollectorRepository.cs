@@ -48,13 +48,13 @@ namespace CollectionApp.api.Data
             {
                 switch (userParams.OrderBy)
                 {
-                    case "username": 
+                    case "username":
                         users = users.OrderByDescending(u => u.Username);
                         break;
-                    case "lastActive": 
+                    case "lastActive":
                         users = users.OrderByDescending(u => u.LastActive);
                         break;
-                    case "knownAs": 
+                    case "knownAs":
                         users = users.OrderByDescending(u => u.KnownAs);
                         break;
                     default:
@@ -64,6 +64,14 @@ namespace CollectionApp.api.Data
 
             return await PageList<User>.CreateAsync(users, userParams.PageNumber,
                 userParams.PageSize);
+        }
+
+        public async Task<Like> GetLike(int userId, int gundamId)
+        {
+            return await context.Likes.FirstOrDefaultAsync(p =>
+                p.LikeeId == gundamId &&
+                p.LikerId == userId
+            );
         }
 
         public async Task<bool> SaveAll()

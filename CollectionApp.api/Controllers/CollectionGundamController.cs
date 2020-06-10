@@ -1,8 +1,10 @@
 using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using CollectionApp.api.Data;
 using CollectionApp.api.Dtos;
+using CollectionApp.api.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,8 +25,23 @@ namespace CollectionApp.api.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetCollectionGundams()
+        public async Task<IActionResult> GetCollectionGundams([FromQuery] UserParams userParams)
         {
+            if (userParams != null)
+            {
+                var currentUserId =
+                    int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+                userParams.UserId = currentUserId;
+
+                var gundams = await this.repo.GetGundams(userParams);
+
+                var gundamsToReturn = this.mapper
+                .Map<IEnumerable<CollectionGundamForListDto>>(gundams);
+
+                return Ok(gundamsToReturn);
+            }
+
             var collectionGundams = await this.repo.GetCollectionGundams();
 
             var collectionGundamsToReturn = this.mapper.Map<IEnumerable<CollectionGundamForListDto>>(collectionGundams);

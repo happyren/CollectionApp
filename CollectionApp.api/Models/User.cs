@@ -24,5 +24,7 @@ namespace CollectionApp.api.Models
         public DateTime LastActive { get; set; }
 
         public ICollection<UserPhoto> Photos { get; set; }
+
+        public ICollection<Like> Likees { get; set; }
     }
 }

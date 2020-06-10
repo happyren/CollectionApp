@@ -73,6 +73,21 @@ namespace CollectionApp.api.Migrations
                     b.ToTable("CollectionGundamPhotos");
                 });
 
+            modelBuilder.Entity("CollectionApp.api.Models.Like", b =>
+                {
+                    b.Property<int>("LikerId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("LikeeId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("LikerId", "LikeeId");
+
+                    b.HasIndex("LikeeId");
+
+                    b.ToTable("Likes");
+                });
+
             modelBuilder.Entity("CollectionApp.api.Models.User", b =>
                 {
                     b.Property<int>("Id")
@@ -145,6 +160,21 @@ namespace CollectionApp.api.Migrations
                         .WithMany("Photos")
                         .HasForeignKey("collectionGundamId")
                         .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CollectionApp.api.Models.Like", b =>
+                {
+                    b.HasOne("CollectionApp.api.Models.CollectionGundam", "Likee")
+                        .WithMany("Likers")
+                        .HasForeignKey("LikeeId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("CollectionApp.api.Models.User", "Liker")
+                        .WithMany("Likees")
+                        .HasForeignKey("LikerId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 

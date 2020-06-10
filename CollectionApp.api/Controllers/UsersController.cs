@@ -6,6 +6,7 @@ using AutoMapper;
 using CollectionApp.api.Data;
 using CollectionApp.api.Dtos;
 using CollectionApp.api.Helpers;
+using CollectionApp.api.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,10 +22,14 @@ namespace CollectionApp.api.Controllers
 
         private readonly IMapper mapper;
 
-        public UsersController(ICollectorRepository repo, IMapper mapper)
+        private readonly ICollectionGundamRepository gRepo;
+
+        public UsersController(ICollectorRepository repo, IMapper mapper, 
+        ICollectionGundamRepository gRepo)
         {
             this.repo = repo;
             this.mapper = mapper;
+            this.gRepo = gRepo;
         }
 
         [HttpGet]
@@ -77,6 +82,34 @@ namespace CollectionApp.api.Controllers
                 return NoContent();
 
             throw new Exception($"Updating user{id} failed on save");
+        }
+
+        [HttpPost("{id}/like/{gundamId}")]
+        public async Task<IActionResult> LikeGundam(int id, int gundamId)
+        {
+            if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var like = await repo.GetLike(id, gundamId);
+
+            if (like != null)
+                return BadRequest("You already liked this gundam");
+
+            if (await gRepo.GetCollectionGundam(gundamId) == null)
+                return NotFound();
+
+            like = new Like
+            {
+                LikerId = id,
+                LikeeId = gundamId
+            };
+            
+            repo.Add<Like>(like);
+
+            if (await repo.SaveAll())
+                return Ok();
+
+            return BadRequest();
         }
     }
 }
